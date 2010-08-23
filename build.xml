@@ -75,9 +75,10 @@
 		<!-- Export -->
 		<delete dir="${export_dir}/punymce" quiet="true" />
 
-		<svn javahl="${javahl}">
-			<export srcUrl="http://punymce.googlecode.com/svn/trunk/" destPath="${export_dir}/punymce" />
-		</svn>
+		<exec executable="git">
+          <arg line="checkout-index --prefix=${export_dir}/punymce/ -a"/>
+        </exec>
+
 
 		<!-- Parse minor version, major version and release date from changelog -->
 		<loadfile property="changelog" srcFile="${export_dir}/punymce/changelog.txt" />
